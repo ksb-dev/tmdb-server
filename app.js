@@ -29,13 +29,19 @@ app.use('/api/v1/filmora/auth', authRouter)
 app.use('/api/v1/filmora/movies', authenticateUser, moviesRouter)
 app.use('/api/v1/filmora/shows', authenticateUser, showsRouter)
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client', 'dist')))
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, 'client', 'dist')))
 
-  app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
-  )
-} else {
+//   app.get('*', (req, res) =>
+//     res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
+//   )
+// } else {
+//   app.get('/', (req, res) => {
+//     res.send('API is running....')
+//   })
+// }
+
+if (process.env.NODE_ENV === 'production') {
   app.get('/', (req, res) => {
     res.send('API is running....')
   })
